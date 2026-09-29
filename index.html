@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wellness & Lifestyle</title>
+<meta name="description" content="Здоровье, биохакинг, гаджеты, питание, психология, йога и путешествия — всё самое ценное о заботе о себе.">
+<meta name="theme-color" content="#0d0c0a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d0c0a; --bg-2:#12110e; --card:#161410; --card-2:#1c1914; --ink:#f2ebdf; --ink-2:#a89f90; --ink-3:#6f675b;
+  --line:rgba(201,169,110,.18); --line-2:rgba(201,169,110,.38);
+  --gold:#c9a96e; --gold-2:#ead5a6; --gold-d:#8f7040; --on-gold:#14110c;
+  --veg:#7f9470; --pro:#b9785a; --gra:#cfae72;
+  --shadow:0 30px 60px -30px rgba(0,0,0,.8);
+  --r:22px;
+}
+:root[data-theme="light"]{
+  --bg:#f7f2ea; --bg-2:#efe7da; --card:#fffbf5; --card-2:#fbf5ec; --ink:#1c1915; --ink-2:#6f665a; --ink-3:#a39886;
+  --line:rgba(143,112,64,.22); --line-2:rgba(143,112,64,.45);
+  --gold:#a8834a; --gold-2:#7d5f2e; --gold-d:#c9a96e; --on-gold:#fffbf5;
+  --shadow:0 30px 60px -35px rgba(80,60,30,.35);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:Manrope,system-ui,sans-serif;font-size:16px;line-height:1.65;overflow-x:hidden;transition:background .5s,color .5s;-webkit-font-smoothing:antialiased}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:200;opacity:.06;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+h1,h2,h3,.serif{font-family:"Cormorant Garamond",Georgia,serif;font-weight:400;line-height:1.05;letter-spacing:-.01em}
+a{color:inherit}
+button{font-family:inherit;color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+@media(min-width:720px){.wrap{padding:0 36px}}
+em.g,h2 em,h1 em{font-style:italic;background:linear-gradient(100deg,var(--gold-2),var(--gold) 55%,var(--gold-d));-webkit-background-clip:text;background-clip:text;color:transparent}
+.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* progress + nav */
+#progress{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--gold-d),var(--gold-2));z-index:120}
+nav.top{position:fixed;top:0;left:0;right:0;z-index:100;transition:.4s;color:#f2ebdf}
+nav.top.scrolled{background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line);color:var(--ink)}
+nav .bar{display:flex;align-items:center;justify-content:space-between;height:66px;gap:10px}
+.logo{font-family:"Cormorant Garamond",serif;font-size:25px;font-style:italic;text-decoration:none;white-space:nowrap}
+.logo b{color:var(--gold);font-style:normal}
+.links{display:none;gap:20px;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.links a{text-decoration:none;opacity:.6;transition:.25s;position:relative}
+.links a:hover,.links a.active{opacity:1}
+.links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;background:var(--gold)}
+@media(min-width:1160px){.links{display:flex}}
+.nav-r{display:flex;gap:6px;align-items:center}
+.lang{display:flex;border:1px solid var(--line-2);border-radius:999px;padding:3px}
+.lang button{border:none;background:none;font-size:11px;font-weight:600;letter-spacing:.06em;padding:6px 9px;border-radius:999px;cursor:pointer;opacity:.6;transition:.25s}
+.lang button.on{background:var(--gold);color:var(--on-gold);opacity:1}
+.icon-btn{width:38px;height:38px;border-radius:50%;border:1px solid var(--line-2);background:none;display:grid;place-items:center;cursor:pointer}
+.icon-btn .i{width:17px;height:17px}
+.burger{display:grid}
+@media(min-width:1160px){.burger{display:none}}
+.drawer{position:fixed;inset:0;background:var(--bg);z-index:110;display:flex;flex-direction:column;justify-content:center;padding:40px 28px;gap:2px;transform:translateY(-100%);transition:transform .6s cubic-bezier(.7,0,.2,1);overflow-y:auto}
+.drawer.open{transform:none}
+.drawer a{font-family:"Cormorant Garamond",serif;font-size:clamp(30px,8vw,44px);text-decoration:none;display:flex;gap:16px;align-items:baseline;padding:4px 0;border-bottom:1px solid var(--line)}
+.drawer a span{font-family:Manrope;font-size:11px;color:var(--gold);letter-spacing:.1em}
+.drawer .close{position:absolute;top:14px;right:16px}
+
+/* hero */
+.hero{min-height:100svh;display:flex;align-items:center;position:relative;overflow:hidden;padding:110px 0 70px;color:#f2ebdf;background:#1a1712}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:60% 50%;animation:kb 26s ease-in-out infinite alternate;filter:saturate(.8)}
+@keyframes kb{from{transform:scale(1.04)}to{transform:scale(1.14) translate(-1.5%,-1%)}}
+.hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,12,10,.93) 0%,rgba(13,12,10,.72) 45%,rgba(13,12,10,.35) 100%),linear-gradient(0deg,var(--bg) 0%,transparent 28%)}
+.hero .wrap{position:relative;z-index:2;width:100%}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:#d9ccb4}
+.eyebrow::before{content:"";width:36px;height:1px;background:var(--gold)}
+.hero h1{font-size:clamp(54px,12.5vw,150px);font-weight:300;margin:22px 0 22px}
+.hero p.lead{max-width:520px;font-size:clamp(15px,2.1vw,18px);color:#cfc5b5;font-weight:300}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 26px;border-radius:999px;font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line-2);transition:.35s;cursor:pointer;background:none;white-space:nowrap}
+.btn.gold{background:linear-gradient(100deg,var(--gold-2),var(--gold));color:#14110c;border-color:transparent;box-shadow:0 12px 30px -12px rgba(201,169,110,.6)}
+.btn:hover{transform:translateY(-2px)}
+.btn .i{width:16px;height:16px}
+.hero .btn:not(.gold){border-color:rgba(234,213,166,.45);color:#f2ebdf}
+.hero-meta{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:60px;max-width:360px}
+.hero-meta div{border-top:1px solid rgba(201,169,110,.4);padding-top:14px}
+.hero-meta b{font-family:"Cormorant Garamond",serif;font-size:40px;font-weight:300;display:block;line-height:1;color:#ead5a6}
+.hero-meta small{font-size:11px;letter-spacing:.06em;color:#b9ae9c;text-transform:uppercase}
+.ring{position:absolute;right:6%;top:50%;transform:translateY(-50%);width:min(34vw,400px);aspect-ratio:1;display:none;z-index:2}
+@media(min-width:960px){.ring{display:block}}
+.ring svg{width:100%;height:100%;animation:spin 70s linear infinite}
+.ring-t{font-family:Manrope;font-size:13px;letter-spacing:6.5px;fill:#ead5a6;opacity:.8}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ring .core{position:absolute;inset:21%;border-radius:50%;border:1px solid rgba(201,169,110,.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);background:rgba(13,12,10,.25);display:grid;place-items:center;text-align:center}
+.ring .core span{font-family:"Cormorant Garamond",serif;font-size:clamp(24px,2.6vw,36px);font-style:italic;font-weight:300;line-height:1.1;color:#ead5a6}
+.scroll-cue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:3;width:1px;height:56px;background:linear-gradient(var(--gold),transparent);animation:cue 2.4s ease-in-out infinite}
+@keyframes cue{0%{transform:translateX(-50%) scaleY(0);transform-origin:top}50%{transform:translateX(-50%) scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:translateX(-50%) scaleY(0);transform-origin:bottom}}
+
+/* sections */
+section.block{padding:clamp(76px,11vw,140px) 0;position:relative}
+.alt{background:var(--bg-2)}
+.sec-head{display:grid;gap:16px;margin-bottom:clamp(34px,5vw,56px)}
+@media(min-width:860px){.sec-head{grid-template-columns:1.1fr 1fr;align-items:end}}
+.num{font-size:11px;letter-spacing:.24em;color:var(--gold);font-weight:600;display:flex;gap:10px;align-items:center;text-transform:uppercase;margin-bottom:14px}
+.num i{font-style:normal;color:var(--ink-3);font-weight:500}
+.sec-head h2{font-size:clamp(44px,7.2vw,86px);font-weight:300}
+.sec-head p{color:var(--ink-2);max-width:470px;font-weight:300}
+.reveal{opacity:0;transform:translateY(34px);transition:opacity 1s ease,transform 1s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+.banner{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:4/3;margin-bottom:22px;background:linear-gradient(135deg,var(--card-2),var(--bg-2));border:1px solid var(--line)}
+@media(min-width:640px){.banner{aspect-ratio:21/8}}
+.banner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.12);transition:transform 2.2s cubic-bezier(.2,.7,.2,1);filter:saturate(.8) contrast(1.04)}
+.banner.in img{transform:scale(1)}
+.banner::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,9,7,.78),rgba(10,9,7,.05) 60%)}
+.banner q{position:absolute;left:24px;right:24px;bottom:22px;z-index:1;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:clamp(24px,3.6vw,40px);font-weight:300;line-height:1.15;color:#f2ebdf;quotes:none}
+.banner q::before{content:"";display:block;width:34px;height:1px;background:#c9a96e;margin-bottom:14px}
+
+.grid{display:grid;gap:14px}
+@media(min-width:640px){.g2,.g3,.g4{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}}
+.card{background:linear-gradient(180deg,var(--card-2),var(--card));border:1px solid var(--line);border-radius:var(--r);padding:28px 24px;position:relative;overflow:hidden;transition:transform .5s,border-color .5s}
+.card:hover{transform:translateY(-4px);border-color:var(--line-2)}
+.card h3{font-size:28px;margin:18px 0 8px}
+.card p{color:var(--ink-2);font-size:14.5px;font-weight:300}
+.ico{width:50px;height:50px;border-radius:50%;border:1px solid var(--line-2);display:grid;place-items:center;color:var(--gold)}
+.tag{display:inline-block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;padding:6px 12px;border-radius:999px;border:1px solid var(--line);color:var(--gold);margin-top:16px}
+.idx{position:absolute;top:22px;right:24px;font-family:"Cormorant Garamond",serif;font-size:18px;color:var(--ink-3);font-style:italic}
+
+.fact{margin-top:14px;padding:26px;border-radius:var(--r);border:1px solid var(--line-2);background:radial-gradient(120% 140% at 0% 0%,rgba(201,169,110,.16),transparent 60%),var(--card);display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.big-n{font-family:"Cormorant Garamond",serif;font-size:clamp(56px,9vw,84px);font-weight:300;line-height:1;background:linear-gradient(100deg,var(--gold-2),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.fact .serif{font-size:clamp(22px,3.2vw,32px);flex:1;min-width:230px;font-weight:300}
+
+/* bio */
+.bio{display:flex;flex-direction:column}
+.bio .how{margin-top:14px;font-size:13.5px;padding-left:14px;border-left:1px solid var(--gold);color:var(--ink)}
+.lvl{display:flex;gap:5px;margin-top:auto;padding-top:20px;align-items:center;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.lvl i{width:20px;height:3px;border-radius:2px;background:var(--line)}
+.lvl i.on{background:var(--gold)}
+.lvl span{margin-left:8px}
+
+/* gadgets */
+.gad{padding:24px 22px}
+.gad h3{font-size:25px;margin:16px 0 6px}
+.gad p{font-size:14px}
+
+/* checklist */
+.two{display:grid;gap:20px}
+@media(min-width:920px){.two{grid-template-columns:1.35fr 1fr;align-items:start}}
+.checks{display:grid;gap:8px}
+.chk{display:flex;gap:14px;align-items:center;padding:15px 18px;border-radius:16px;background:var(--card);border:1px solid var(--line);cursor:pointer;transition:.3s;user-select:none;-webkit-tap-highlight-color:transparent}
+.chk:hover{border-color:var(--line-2)}
+.chk input{position:absolute;opacity:0;pointer-events:none}
+.chk .box{flex:none;width:24px;height:24px;border-radius:50%;border:1px solid var(--gold);display:grid;place-items:center;transition:.3s}
+.chk .box svg{width:12px;opacity:0;transform:scale(.3);transition:.3s}
+.chk input:checked + .box{background:var(--gold)}
+.chk input:checked + .box svg{opacity:1;transform:none}
+.chk input:focus-visible + .box{outline:2px solid var(--gold-2);outline-offset:3px}
+.chk .t{font-size:14.5px;line-height:1.35}
+.chk .t small{display:block;color:var(--ink-3);font-size:12px;margin-top:2px}
+.chk .i{margin-left:auto;color:var(--gold);opacity:.8}
+.panel{position:sticky;top:86px;background:radial-gradient(120% 100% at 50% 0%,rgba(201,169,110,.12),transparent 60%),var(--card);border:1px solid var(--line-2);border-radius:var(--r);padding:32px 26px;text-align:center}
+.gauge{width:200px;height:200px;margin:0 auto 12px;position:relative}
+.gauge svg{transform:rotate(-90deg);width:100%;height:100%}
+.gauge circle{fill:none;stroke-width:6}
+.gauge .bg{stroke:var(--line)}
+.gauge .fg{stroke:url(#gg);stroke-linecap:round;transition:stroke-dashoffset 1s cubic-bezier(.2,.7,.2,1)}
+.gauge .val{position:absolute;inset:0;display:grid;place-items:center;align-content:center}
+.gauge .val b{font-family:"Cormorant Garamond",serif;font-size:64px;font-weight:300;line-height:1}
+.gauge .val small{color:var(--ink-3);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.panel h3{font-size:32px;margin:4px 0 8px}
+.panel p{color:var(--ink-2);font-size:14px;font-weight:300}
+.panel .btn{margin-top:20px;padding:11px 20px;font-size:11px}
+
+/* habits */
+.habits{display:grid;gap:10px}
+.h-row{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 16px;display:grid;gap:12px}
+@media(min-width:760px){.h-row{grid-template-columns:230px 1fr;align-items:center}}
+.h-name{display:flex;align-items:center;gap:12px;font-size:14.5px}
+.h-name .i{color:var(--gold)}
+.h-cnt{margin-left:auto;font-size:12px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.h-cells{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.hc{aspect-ratio:1;max-height:48px;border-radius:12px;border:1px solid var(--line);background:none;cursor:pointer;font-size:10.5px;letter-spacing:.04em;color:var(--ink-3);display:grid;place-items:center;transition:.25s;-webkit-tap-highlight-color:transparent;width:100%}
+.hc:hover{border-color:var(--line-2)}
+.hc.today{border-color:var(--gold);color:var(--gold)}
+.hc.on{background:linear-gradient(135deg,var(--gold-2),var(--gold));border-color:transparent;color:#14110c;font-weight:700}
+.h-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:4px}
+.h-stat{background:var(--card);border:1px solid var(--line-2);border-radius:18px;padding:18px}
+.h-stat b{font-family:"Cormorant Garamond",serif;font-size:42px;font-weight:300;line-height:1;display:block;color:var(--gold-2)}
+:root[data-theme="light"] .h-stat b{color:var(--gold)}
+.h-stat small{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.h-bar{height:3px;background:var(--line);border-radius:2px;margin-top:12px;overflow:hidden}
+.h-bar i{display:block;height:100%;background:var(--gold);width:0;transition:width .6s}
+.h-foot{display:flex;justify-content:flex-end;margin-top:4px}
+.h-foot .btn{padding:11px 20px;font-size:11px}
+
+/* nutrition */
+.plate-wrap{display:grid;gap:34px;align-items:center}
+@media(min-width:920px){.plate-wrap{grid-template-columns:1fr 1fr}}
+.plate{max-width:420px;margin:0 auto;width:100%}
+.plate svg{width:100%;height:auto;filter:drop-shadow(0 30px 40px rgba(0,0,0,.45))}
+.plate .seg{transition:transform .4s;transform-origin:200px 200px;cursor:pointer}
+.plate .seg:hover{transform:scale(1.035)}
+.legend{display:grid;gap:10px}
+.leg{display:flex;gap:16px;align-items:flex-start;padding:18px 20px;border-radius:18px;background:var(--card);border:1px solid var(--line)}
+.leg .dot{flex:none;width:12px;height:12px;border-radius:50%;margin-top:7px;box-shadow:0 0 0 4px color-mix(in srgb,currentColor 18%,transparent)}
+.leg b{font-weight:600;font-size:15px}
+.leg p{font-size:14px;color:var(--ink-2);font-weight:300}
+.rules{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border-radius:999px;border:1px solid var(--line);font-size:12.5px;color:var(--ink-2)}
+.pill::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--gold)}
+
+/* practice (breath/meditation) */
+.practice{background:radial-gradient(90% 120% at 100% 0%,rgba(201,169,110,.12),transparent 55%),var(--card);border:1px solid var(--line-2);border-radius:var(--r);padding:clamp(22px,4vw,44px);margin-bottom:16px}
+.tabs{display:inline-flex;border:1px solid var(--line-2);border-radius:999px;padding:4px;margin-bottom:26px}
+.tabs button{border:none;background:none;padding:9px 18px;border-radius:999px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;cursor:pointer;color:var(--ink-2);transition:.3s}
+.tabs button.on{background:var(--gold);color:var(--on-gold)}
+.pane{display:none;gap:26px;align-items:center}
+.pane.on{display:grid}
+@media(min-width:840px){.pane{grid-template-columns:1fr 1fr}}
+.orb-box{display:grid;place-items:center;height:290px}
+.orb{width:116px;height:116px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#f4e4bf,#c9a96e 60%,#8f7040);box-shadow:0 0 0 18px rgba(201,169,110,.1),0 0 0 40px rgba(201,169,110,.05),0 0 80px rgba(201,169,110,.35);transition:transform 4s ease-in-out;display:grid;place-items:center}
+.orb span{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#14110c;transition:transform 4s ease-in-out}
+.pane h3{font-size:clamp(34px,4.5vw,50px);font-weight:300;margin-bottom:10px}
+.pane p{color:var(--ink-2);font-weight:300}
+.steps{display:flex;gap:8px;margin:18px 0 24px;flex-wrap:wrap}
+.timer{position:relative;width:230px;height:230px;margin:0 auto}
+.timer svg{width:100%;height:100%;transform:rotate(-90deg)}
+.timer circle{fill:none;stroke-width:3}
+.timer .bg{stroke:var(--line)}
+.timer .fg{stroke:var(--gold);stroke-linecap:round;transition:stroke-dashoffset 1s linear}
+.timer .val{position:absolute;inset:0;display:grid;place-items:center;align-content:center;text-align:center}
+.timer .val b{font-family:"Cormorant Garamond",serif;font-size:58px;font-weight:300;line-height:1;font-variant-numeric:tabular-nums}
+.timer .val small{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-top:6px}
+.presets{display:flex;gap:8px;margin:18px 0 22px;flex-wrap:wrap}
+.chip{border:1px solid var(--line-2);background:none;border-radius:999px;padding:9px 16px;font-size:12.5px;cursor:pointer;transition:.25s;color:var(--ink-2)}
+.chip.on{background:var(--gold);color:var(--on-gold);border-color:transparent}
+.ctrl{display:flex;gap:10px;flex-wrap:wrap}
+
+/* yoga player */
+.player{display:grid;gap:0;border:1px solid var(--line-2);border-radius:var(--r);overflow:hidden;background:var(--card)}
+@media(min-width:880px){.player{grid-template-columns:1fr 1fr}}
+.p-stage{position:relative;min-height:300px;display:grid;place-items:center;background:radial-gradient(70% 70% at 50% 45%,rgba(201,169,110,.18),transparent 70%),var(--card-2);border-bottom:1px solid var(--line)}
+@media(min-width:880px){.p-stage{border-bottom:none;border-right:1px solid var(--line);min-height:440px}}
+.p-stage svg{height:190px;width:auto;max-width:80%;stroke:var(--gold-2);fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;transition:opacity .5s}
+:root[data-theme="light"] .p-stage svg{stroke:var(--gold)}
+.p-stage svg circle{fill:var(--gold-2);stroke:none}
+:root[data-theme="light"] .p-stage svg circle{fill:var(--gold)}
+.p-count{position:absolute;top:20px;left:22px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.p-total{position:absolute;top:20px;right:22px;font-size:11px;letter-spacing:.1em;color:var(--ink-3)}
+.p-prog{position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--line)}
+.p-prog i{display:block;height:100%;background:var(--gold);width:0;transition:width 1s linear}
+.p-info{padding:clamp(24px,4vw,44px);display:grid;gap:10px;align-content:center}
+.p-info .sk{font-style:italic;color:var(--gold);font-family:"Cormorant Garamond",serif;font-size:20px}
+.p-info h3{font-size:clamp(36px,5vw,54px);font-weight:300}
+.p-info p{color:var(--ink-2);font-weight:300;min-height:3.2em}
+.p-row{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:8px}
+.p-row .timer{width:130px;height:130px;margin:0}
+.p-row .timer .val b{font-size:34px}
+.p-row .ctrl{flex:1;min-width:190px}
+.round{width:50px;height:50px;border-radius:50%;border:1px solid var(--line-2);background:none;display:grid;place-items:center;cursor:pointer;transition:.3s}
+.round:hover{border-color:var(--gold)}
+.round.main{width:62px;height:62px;background:linear-gradient(135deg,var(--gold-2),var(--gold));color:#14110c;border:none}
+.round .i{width:20px;height:20px}
+.p-list{display:flex;gap:8px;overflow-x:auto;padding:14px 16px 4px;margin:0 -16px;scrollbar-width:none;scroll-snap-type:x proximity}
+.p-list::-webkit-scrollbar{display:none}
+.p-chip{flex:none;scroll-snap-align:start;border:1px solid var(--line);background:var(--card);border-radius:14px;padding:10px 14px;cursor:pointer;text-align:left;transition:.25s;min-width:140px}
+.p-chip b{display:block;font-family:"Cormorant Garamond",serif;font-size:19px;font-weight:500}
+.p-chip small{font-size:11px;color:var(--ink-3)}
+.p-chip.on{border-color:var(--gold);background:color-mix(in srgb,var(--gold) 12%,var(--card))}
+.p-chip.done{opacity:.55}
+
+/* travel */
+.dest{min-height:340px;display:flex;flex-direction:column;justify-content:flex-end;padding:26px;color:#f2ebdf;background:#1d1a15}
+.dest img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.4s cubic-bezier(.2,.7,.2,1);filter:saturate(.8)}
+.dest:hover img{transform:scale(1.07)}
+.dest::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,9,7,.1) 20%,rgba(10,9,7,.88))}
+.dest > :not(img){position:relative;z-index:1}
+.dest h3{font-size:34px;margin:6px 0 6px;color:#f2ebdf}
+.dest p{color:rgba(242,235,223,.78)}
+.dest .loc{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:#ead5a6}
+.tips{margin-top:14px}
+.tip{display:flex;gap:16px;align-items:flex-start;padding:22px}
+.tip h3{font-size:24px;margin:0 0 4px}
+
+footer{padding:90px 0 50px;text-align:center;border-top:1px solid var(--line)}
+footer .serif{font-size:clamp(38px,6.5vw,72px);font-weight:300}
+footer p.note{color:var(--ink-3);font-size:12px;max-width:580px;margin:26px auto 0}
+footer .btn{margin-top:30px}
+footer .sign{margin-top:26px;font-family:"Cormorant Garamond",serif;font-style:italic;color:var(--gold);font-size:20px}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<nav class="top" id="nav">
+  <div class="wrap bar">
+    <a href="#hello" class="logo">well<b>·</b>being</a>
+    <div class="links" id="links"></div>
+    <div class="nav-r">
+      <div class="lang" id="lang" role="group" aria-label="Language">
+        <button data-lang="ru">RU</button><button data-lang="kk">KZ</button><button data-lang="en">EN</button>
+      </div>
+      <button class="icon-btn" id="theme" aria-label="Theme"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg></button>
+      <button class="icon-btn burger" id="burger" aria-label="Menu"><svg class="i" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></svg></button>
+    </div>
+  </div>
+</nav>
+
+<div class="drawer" id="drawer">
+  <button class="icon-btn close" id="close" aria-label="Close"><svg class="i" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <div id="drawerLinks"></div>
+</div>
+
+<main id="app"></main>
+
+<script>
+(function(){
+const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const pad=n=>String(n).padStart(2,'0');
+const mmss=s=>Math.floor(s/60)+':'+pad(s%60);
+
+/* ---------- icons ---------- */
+const IC={
+ moon:'<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/>',
+ sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
+ drop:'<path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/>',
+ steps:'<path d="M8 3c1.7 0 2.5 2 2.5 4.5S9.5 12 8 12 5.5 9.9 5.5 7.5 6.3 3 8 3zM6 14.5h4V16a2 2 0 0 1-4 0zM16 7c1.7 0 2.5 2 2.5 4.5S17.5 16 16 16s-2.5-2.1-2.5-4.5S14.3 7 16 7zM14 18.5h4v.5a2 2 0 0 1-4 0z"/>',
+ snow:'<path d="M12 2v20M3.5 7l17 10M20.5 7l-17 10M9 3.5l3 2 3-2M9 20.5l3-2 3 2"/>',
+ clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+ wind:'<path d="M3 8h11a3 3 0 1 0-3-3M3 12h15a3 3 0 1 1-3 3M3 16h7"/>',
+ flask:'<path d="M9 3h6M10 3v6L4.5 19a1.5 1.5 0 0 0 1.3 2h12.4a1.5 1.5 0 0 0 1.3-2L14 9V3M7 15h10"/>',
+ watch:'<rect x="6.5" y="6" width="11" height="12" rx="3"/><path d="M9 6l1-3h4l1 3M9 18l1 3h4l1-3M12 9.5V12l1.6 1"/>',
+ flame:'<path d="M12 22a6 6 0 0 0 6-6c0-4-3-6-4-10-2 2-3 4-3 6-1-1-2-2-2-3-2 2-3 4-3 7a6 6 0 0 0 6 6z"/>',
+ ring:'<circle cx="12" cy="14.5" r="6.5"/><path d="M9.5 5.5L12 3l2.5 2.5L12 8z"/>',
+ alarm:'<circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M5 3L2 6M19 3l3 3"/>',
+ glasses:'<circle cx="6.5" cy="14" r="3.5"/><circle cx="17.5" cy="14" r="3.5"/><path d="M10 14h4M3 13V9l2-3M21 13V9l-2-3"/>',
+ massage:'<path d="M3 9h10a3.5 3.5 0 0 1 0 7H3zM16.5 12.5H19M19 10h2.5v5H19M7 16v5h3.5v-5"/>',
+ bottle:'<path d="M10 2h4v3l2 3v12a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V8l2-3zM8 12h8M8 16h8"/>',
+ mask:'<path d="M2 10c3-3.5 17-3.5 20 0 0 4-3 6.5-6 5.5l-4-2-4 2c-3 1-6-1.5-6-5.5z"/>',
+ mat:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7.5 9.5h.01M12 9.5h.01M16.5 9.5h.01M7.5 14.5h.01M12 14.5h.01M16.5 14.5h.01" stroke-width="2.6"/>',
+ note:'<path d="M5 3h10l4 4v14H5zM9 11h6M9 15h6M9 7h3"/>',
+ people:'<circle cx="9" cy="8" r="3.2"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6M15.5 14.5c3 0 5.5 2 5.5 5"/>',
+ phoneoff:'<rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M3 3l18 18"/>',
+ heart:'<path d="M12 20s-8-4.5-8-11a4.5 4.5 0 0 1 8-2.5A4.5 4.5 0 0 1 20 9c0 6.5-8 11-8 11z"/>',
+ lotus:'<path d="M12 19c-4 0-8-2-9-6 3 0 5 1 6 2-1-4 0-8 3-11 3 3 4 7 3 11 1-1 3-2 6-2-1 4-5 6-9 6z"/>',
+ chat:'<path d="M4 5h16v11H9l-5 4z"/>',
+ plane:'<path d="M21 3L3 10.5l7 2.5 2.5 7zM10 13L21 3"/>',
+ bag:'<rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V5a3 3 0 0 1 6 0v2M4 12h16"/>',
+ leaf:'<path d="M5 19C5 10 11 4 20 4c0 9-6 15-15 15zM5 19l8-8"/>',
+ bolt:'<path d="M13 2L4.5 14H11l-1 8 8.5-12H12z"/>',
+ spark:'<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8zM19 16l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/>',
+ play:'<path d="M8 5l11 7-11 7z" fill="currentColor"/>',
+ pause:'<path d="M8 5v14M16 5v14" stroke-width="2.4"/>',
+ prev:'<path d="M18 6l-8 6 8 6zM6 6v12"/>',
+ next:'<path d="M6 6l8 6-8 6zM18 6v12"/>',
+ reset:'<path d="M4 12a8 8 0 1 0 2.3-5.6M4 4v4h4"/>',
+ arrow:'<path d="M5 12h14M13 6l6 6-6 6"/>',
+ up:'<path d="M12 19V5M6 11l6-6 6 6"/>'
+};
+const ic=(n,c='i')=>`<svg class="${c}" viewBox="0 0 24 24" aria-hidden="true">${IC[n]}</svg>`;
+
+/* ---------- photos ---------- */
+const P={hero:'1506126613408-eca07ce68773',health:'1476480862126-209bfaa8edc8',gadgets:'1523275335684-37898b6baf30',food:'1512621776951-a57141f2eefd',mind:'1499209974431-9dddcece7f88',yoga:'1544367567-0f2fcb009e0b',
+ bali:'1537996194471-e657df975ab4',iceland:'1531366936337-7c912a4589a7',kz:'1464822759023-fed622ff2c3b',japan:'1493976040374-85c8e12f0c0e',portugal:'1507525428034-b723cf961d3e',kerala:'1602216056096-3b40cc0c9944'};
+const img=(k,w=1400)=>`<img src="https://images.unsplash.com/photo-${P[k]}?auto=format&fit=crop&w=${w}&q=70" alt="" loading="${k==='hero'?'eager':'lazy'}" onerror="this.remove()">`;
+
+/* ---------- yoga figures ---------- */
+const FIG=[
+ '<svg viewBox="0 0 100 140"><circle cx="50" cy="18" r="9"/><path d="M50 30v52M50 82l-8 50M50 82l8 50M50 42Q43 24 50 6Q57 24 50 42"/></svg>',
+ '<svg viewBox="0 0 160 110"><circle cx="70" cy="76" r="8"/><path d="M20 104L80 20l60 84M80 20L64 84"/></svg>',
+ '<svg viewBox="0 0 160 120"><circle cx="32" cy="38" r="8"/><path d="M40 46l30 18h40l20 44M70 64l-30 44M110 64l-8-30"/></svg>',
+ '<svg viewBox="0 0 160 110"><circle cx="122" cy="52" r="8"/><path d="M20 100h40l10-30 42-10M70 70l10 30h40M112 60l26 32"/></svg>',
+ '<svg viewBox="0 0 140 140"><circle cx="70" cy="16" r="9"/><path d="M70 28v48M70 76l-30 56M70 76l30 56M70 44H14M70 44h56"/></svg>',
+ '<svg viewBox="0 0 170 80"><circle cx="18" cy="54" r="8"/><path d="M30 58h120M60 58l-4 12M100 58l-4 12"/></svg>'
+];
+const POSE_SEC=[60,60,60,120,120,180];
+
+/* ---------- meta ---------- */
+const IDS=['health','bio','gadgets','check','habits','food','mind','yoga','travel'];
+const MINS=[1,1.5,1,1,.5,1,1.5,1,1];
+const HEALTH_IC=['moon','steps','sun','drop'];
+const BIO_IC=['snow','clock','wind','flask','watch','flame'], BIO_LVL=[3,3,4,5,3,4];
+const GAD_IC=['ring','watch','alarm','glasses','massage','bottle','mask','mat'];
+const CHK_IC=['moon','drop','steps','leaf','sun','bolt','wind','people','heart','spark'];
+const HAB_IC=['drop','moon','steps','lotus','leaf','phoneoff'];
+const MIND_IC=['note','people','phoneoff','heart','lotus','chat'];
+const DEST=['bali','iceland','kz','japan','portugal','kerala'];
+const TIP_IC=['plane','bag','steps'];
+
+/* ---------- texts ---------- */
+const I18N={
+ru:{
+ nav:['Здоровье','Биохакинг','Гаджеты','Чек-лист','Привычки','Питание','Психология','Йога','Путешествия'],
+ min:'мин',
+ hero:{eyebrow:'Wellness & Lifestyle',h1a:'Тело. Ум.',h1b:'Ритм жизни.',lead:'Приветствуем вас в пространстве осознанной заботы о себе. Здесь собрано самое ценное о здоровье, биохакинге, питании и внутреннем балансе — изящно, без лишнего и с опорой на науку.',cta1:'Начать путь',cta2:'Пройти чек-лист',meta:[['9','разделов'],['∞','пользы']],ring:'СОН · ДВИЖЕНИЕ · ПИТАНИЕ · ДЫХАНИЕ · СВЕТ · ПОКОЙ · ПУТЬ · ',core:'живи<br>осознанно'},
+ health:{title:['Четыре опоры','здоровья'],desc:'Никакая добавка не заменит базу. Сон, движение, свет и вода дают 80% результата — всё остальное лишь тонкая настройка.',quote:'Движение — лекарство, которое всегда с собой.',
+  items:[['Сон','7–9 часов в одно и то же время. Прохладная (18–20°C) и тёмная спальня, экран — за час до сна прочь.','основа восстановления'],['Движение','7–10 тыс. шагов, 150 минут умеренной нагрузки в неделю и 2 силовые тренировки для мышц и костей.','продлевает жизнь'],['Свет','10–15 минут дневного света утром запускают циркадные ритмы: бодрость днём и крепкий сон ночью.','бесплатный биохак'],['Вода','~30 мл на кг веса в день. Первый стакан — сразу после пробуждения. Жажда уже означает лёгкое обезвоживание.','энергия и фокус']],
+  fact:['−30%','риск ранней смертности у тех, кто регулярно ходит пешком хотя бы 30 минут в день.']},
+ bio:{title:['Биохакинг','без мифов'],desc:'Биохакинг — это осознанные эксперименты над образом жизни. Шкала показывает, насколько метод подтверждён исследованиями.',lvl:'доказательность',
+  items:[['Холод','Контрастный душ или 1–3 минуты в холодной воде повышают дофамин и бодрость.','Начните с 30 секунд холодной воды в конце душа.'],['Интервальное голодание','Окно питания 8–10 часов помогает контролю аппетита и чувствительности к инсулину.','Формат 14/10 — мягкий старт. Не для беременных и при РПП.'],['Дыхание','Медленное дыхание (6 вдохов в минуту) снижает пульс и уровень стресса за минуты.','Попробуйте упражнение в разделе «Психология».'],['Анализы','Раз в год: витамин D, ферритин, B12, глюкоза, липидный профиль, ТТГ. Данные важнее догадок.','Добавки — только по результатам и после врача.'],['Трекинг','Часы и кольца показывают сон, пульс покоя и вариабельность ритма (HRV) — индикатор восстановления.','Следите за трендами, а не за цифрой одного дня.'],['Сауна','2–4 визита в неделю по 15–20 минут связаны с лучшим здоровьем сердца и сосудов.','Пейте воду и не совмещайте с алкоголем.']]},
+ gadgets:{title:['Гаджеты','в помощь'],desc:'Технологии, которые мягко подталкивают к здоровым привычкам. Начните с одного — того, что закрывает вашу главную задачу.',quote:'Технологии — помощник, а не хозяин.',
+  items:[['Умное кольцо','Незаметно следит за сном, HRV, температурой тела и восстановлением. Например: Oura, Ultrahuman.','сон · восстановление'],['Фитнес-часы','Шаги, пульс, тренировки и напоминания встать. Например: Apple Watch, Garmin, Whoop.','движение'],['Световой будильник','Имитирует рассвет за 20–30 минут до подъёма — пробуждение мягкое, без стресса.','утро · ритм'],['Очки blue-light','Вечером снижают влияние экранов на мелатонин и помогают быстрее уснуть.','сон'],['Массажный пистолет','Снимает мышечное напряжение после тренировок и долгого сидения.','мышцы'],['Умная бутылка','Подсвечивается и напоминает сделать глоток — норма воды без усилий.','вода'],['Маска и белый шум','3D-маска для сна и генератор шума создают идеальную темноту и тишину.','сон'],['Аппликатор','10–20 минут на игольчатом коврике расслабляют спину и снимают стресс.','релакс']]},
+ check:{title:['Чек-лист','самочувствия'],desc:'Отметьте то, что верно для вас за последнюю неделю. Честность — лучший биохак. Результат сохранится в браузере.',of:'из 100',reset:'Сбросить',
+  items:[['Сплю 7+ часов большинство ночей','и просыпаюсь отдохнувшим'],['Пью достаточно воды','светлая моча, нет жажды'],['Двигаюсь 30+ минут в день','прогулка тоже считается'],['Ем овощи каждый день','хотя бы 2 приёма'],['Бываю на дневном свету','утром 10+ минут'],['Уровень энергии стабилен','без провалов после обеда'],['Легко справляюсь со стрессом','нет постоянной тревоги'],['Общаюсь с близкими','живое, тёплое общение'],['Нет болей и дискомфорта','спина, голова, ЖКТ в норме'],['Есть время для себя и радости','хобби, отдых, тишина']],
+  v:[['Начнём?','Отмечайте пункты — и получите персональную подсказку.'],['Время заботы','Выберите одну привычку — сон или воду — и держите её 21 день. Маленький шаг лучше большого плана.'],['Хороший баланс','База есть. Добавьте то, чего не хватает: утренний свет, прогулку или дыхание.'],['Отличная форма','Вы на верном пути! Время тонкой настройки — загляните в биохакинг и гаджеты.'],['Гармония ✦','Идеально. Сохраняйте ритм и делитесь опытом с близкими.']]},
+ habits:{title:['Трекер','привычек'],desc:'Отмечайте каждый день недели. Привычка формируется в среднем за 66 дней — главное не пропускать дважды подряд.',
+  items:['Вода 2 л','Сон 7+ часов','8 000 шагов','Медитация','Овощи','Без экрана перед сном'],days:['Пн','Вт','Ср','Чт','Пт','Сб','Вс'],done:'выполнено за неделю',top:'лучшая привычка',none:'—',reset:'Новая неделя'},
+ food:{title:['Тарелка','здоровья'],desc:'Никаких сложных диет. Соберите тарелку по простой схеме — и 90% вопросов о питании решены.',quote:'Вы — то, что вы едите регулярно.',plate:['½ овощи','¼ белок','¼ крупы'],
+  items:[['Половина — овощи и зелень','Клетчатка кормит микробиом. Цель — 30 разных растений в неделю, включая травы, орехи и семена.'],['Четверть — белок','Рыба, птица, яйца, бобовые, тофу. 1,2–1,6 г на кг веса — для мышц, сытости и гормонов.'],['Четверть — сложные углеводы','Гречка, киноа, бурый рис, цельнозерновой хлеб. Плюс ложка полезных жиров: оливковое масло, авокадо.']],
+  rules:['Сначала овощи, потом углеводы','Сахар — меньше 25 г в день','Рыба 2 раза в неделю','Ферментированное каждый день','Ужин за 3 часа до сна']},
+ mind:{title:['Ментальное','здоровье'],desc:'Психика — такой же орган, как сердце: её нужно тренировать, давать отдых и вовремя лечить. Это нормально.',quote:'Тишина — тоже форма заботы о себе.',
+  tabs:['Дыхание','Медитация'],
+  breath:{h:'Квадратное дыхание',p:'Техника пилотов и спортсменов для быстрого спокойствия. Одна минута — и пульс замедляется.',steps:['Вдох 4','Пауза 4','Выдох 4','Пауза 4'],start:'Дышать 1 минуту',stop:'Остановить',orb:['Старт','Вдох','Пауза','Выдох','Пауза','Готово']},
+  med:{h:'Таймер медитации',p:'Сядьте удобно, закройте глаза и следите за дыханием. Мягкий звук колокольчика отметит начало и конец.',start:'Начать',pause:'Пауза',resume:'Продолжить',reset:'Сброс',left:'осталось',done:'Намасте ✦'},
+  items:[['Дневник эмоций','3 минуты вечером: что я чувствовал, почему, что мне нужно. Называние эмоции снижает её интенсивность.'],['Связи','Качество отношений — главный предиктор счастья и долголетия по данным 80-летнего Гарвардского исследования.'],['Цифровая гигиена','Первый и последний час дня — без ленты. Уведомления — только от людей, а не от приложений.'],['Благодарность','3 хороших события дня — простая практика позитивной психологии, заметно поднимающая настроение за 2 недели.'],['Осознанность','10 минут медитации в день снижают тревожность. Начните с 2 минут — важна регулярность, а не длительность.'],['Просить помощи','Если плохое настроение длится дольше двух недель — это повод обратиться к психологу или психотерапевту.']]},
+ yoga:{title:['Йога','на 10 минут'],desc:'Утренний комплекс для гибкости и ясной головы. Нажмите «Старт» — таймер проведёт по всем позам, колокольчик подскажет смену.',quote:'Дыши. Растягивайся. Отпускай.',
+  pose:'Поза',of:'из',total:'всего 10 минут',left:'осталось',done:'Комплекс завершён ✦',sec:'с',m:'мин',
+  items:[['Тадасана','Поза горы','Стопы вместе, макушка тянется вверх, руки над головой. Выравнивает осанку.'],['Адхо Мукха Шванасана','Собака мордой вниз','Тело — перевёрнутая «V». Вытягивает спину и заднюю поверхность ног.'],['Бхуджангасана','Кобра','Лёжа на животе, раскройте грудь вперёд и вверх. Укрепляет спину, бодрит.'],['Баласана','Поза ребёнка','Сядьте на пятки, лоб на коврик, руки вперёд. Успокаивает нервную систему.'],['Вирабхадрасана II','Воин II','Широкий шаг, колено над пяткой, руки в стороны. На середине смените сторону.'],['Шавасана','Расслабление','Лёжа на спине, закройте глаза. Сканируйте тело от макушки до пальцев ног.']]},
+ travel:{title:['Путешествия','для души'],desc:'Wellness-путешествие — это не только спа. Это смена ритма, природа, новые вкусы и время на себя.',
+  items:[['Индонезия','Бали, Убуд','Йога-ретриты среди рисовых террас, джаму-напитки и медитации на рассвете.'],['Исландия','Голубая лагуна','Геотермальные источники, северное сияние и контрастные ванны на природе.'],['Казахстан','Алтай и Боровое','Горный воздух, хвойные леса, пешие тропы и кумыс — детокс без перелётов.'],['Япония','Киото, онсэны','Синрин-ёку — «лесные ванны», чайные церемонии и философия неспешности.'],['Португалия','Алгарве','Океан, сёрфинг и средиземноморская диета — лидер по долголетию.'],['Индия','Керала','Аюрведические программы, массажи с маслами и йога на её родине.']],
+  tips:[['Джетлаг','Сразу живите по местному времени: утром — солнце, вечером — без кофеина.'],['Wellness-аптечка','Маска для сна, беруши, электролиты, магний, SPF и удобная обувь.'],['Активность','Исследуйте города пешком: 15 000 шагов в день приходят сами собой.']]},
+ foot:{a:'Маленькие шаги —',b:'большие перемены.',top:'Наверх',note:'Материал носит ознакомительный характер и не заменяет консультацию врача. Перед изменением питания, приёмом добавок или новыми нагрузками проконсультируйтесь со специалистом.',sign:'будьте здоровы'}
+},
+kk:{
+ nav:['Денсаулық','Биохакинг','Гаджеттер','Чек-лист','Әдеттер','Тамақтану','Психология','Йога','Саяхат'],
+ min:'мин',
+ hero:{eyebrow:'Wellness & Lifestyle',h1a:'Дене. Сана.',h1b:'Өмір ырғағы.',lead:'Өзіңізге саналы қамқорлық кеңістігіне қош келдіңіз. Мұнда денсаулық, биохакинг, тамақтану және ішкі тепе-теңдік туралы ең құндысы жинақталған — нәзік, артықсыз және ғылымға сүйеніп.',cta1:'Жолды бастау',cta2:'Чек-листтен өту',meta:[['9','бөлім'],['∞','пайда']],ring:'ҰЙҚЫ · ҚОЗҒАЛЫС · ТАМАҚ · ТЫНЫС · ЖАРЫҚ · ТЫНЫШТЫҚ · ЖОЛ · ',core:'саналы<br>өмір сүр'},
+ health:{title:['Денсаулықтың','төрт тірегі'],desc:'Ешбір қоспа негізді алмастыра алмайды. Ұйқы, қозғалыс, жарық пен су нәтиженің 80%-ын береді — қалғаны тек нәзік баптау.',quote:'Қозғалыс — әрдайым қасыңдағы дәрі.',
+  items:[['Ұйқы','Күн сайын бір уақытта 7–9 сағат. Салқын (18–20°C) әрі қараңғы бөлме, ұйқыдан бір сағат бұрын экранды өшіріңіз.','қалпына келудің негізі'],['Қозғалыс','Күніне 7–10 мың қадам, аптасына 150 минут орташа жүктеме және бұлшықет пен сүйекке арналған 2 күш жаттығуы.','өмірді ұзартады'],['Жарық','Таңертеңгі 10–15 минут күн жарығы циркадты ырғақты іске қосады: күндіз сергектік, түнде терең ұйқы.','тегін биохак'],['Су','Күніне дене салмағының әр келісіне ~30 мл. Бірінші стақан — оянған бойда. Шөлдеу — жеңіл сусызданудың белгісі.','қуат пен зейін']],
+  fact:['−30%','күніне кемінде 30 минут жаяу жүретін адамдарда ерте өлім қаупі осыншама төмен.']},
+ bio:{title:['Биохакинг','мифтерсіз'],desc:'Биохакинг — өмір салтына саналы тәжірибе жасау. Шкала әдістің зерттеулермен қаншалықты расталғанын көрсетеді.',lvl:'дәлелділік',
+  items:[['Суық','Контрастты душ немесе 1–3 минут суық суда болу дофаминді арттырып, сергітеді.','Душтың соңында 30 секунд суық судан бастаңыз.'],['Интервалды аштық','Тамақтанудың 8–10 сағаттық терезесі тәбетті бақылауға және инсулинге сезімталдыққа көмектеседі.','14/10 форматы — жұмсақ бастама. Жүктілік пен тамақтану бұзылыстарында болмайды.'],['Тыныс','Баяу тыныс алу (минутына 6 рет) бірнеше минутта пульс пен стресті төмендетеді.','«Психология» бөліміндегі жаттығуды көріңіз.'],['Талдаулар','Жылына бір рет: D дәрумені, ферритин, B12, глюкоза, липидтік профиль, ТТГ. Болжамнан гөрі дерек маңызды.','Қоспаларды тек нәтиже бойынша және дәрігермен кеңескен соң қабылдаңыз.'],['Трекинг','Сағат пен сақина ұйқыны, тыныштықтағы пульсті және HRV-ны — қалпына келу көрсеткішін бақылайды.','Бір күннің санына емес, үрдіске қараңыз.'],['Сауна','Аптасына 2–4 рет 15–20 минуттан — жүрек пен қан тамырларының денсаулығына пайдалы.','Су ішіңіз және алкогольмен біріктірмеңіз.']]},
+ gadgets:{title:['Көмекші','гаджеттер'],desc:'Салауатты әдеттерге жұмсақ итермелейтін технологиялар. Басты мақсатыңызға сай біреуінен бастаңыз.',quote:'Технология — қожайын емес, көмекші.',
+  items:[['Смарт-сақина','Ұйқыны, HRV-ны, дене қызуын және қалпына келуді байқатпай бақылайды. Мысалы: Oura, Ultrahuman.','ұйқы · қалпына келу'],['Фитнес-сағат','Қадам, пульс, жаттығулар және орныңнан тұр деген ескертпелер. Мысалы: Apple Watch, Garmin, Whoop.','қозғалыс'],['Жарық оятқыш','Оянардан 20–30 минут бұрын таң атуын имитациялайды — ояну жұмсақ, стресссіз.','таң · ырғақ'],['Blue-light көзілдірік','Кешке экрандардың мелатонинге әсерін азайтып, тезірек ұйықтауға көмектеседі.','ұйқы'],['Массаж пистолеті','Жаттығудан және ұзақ отырудан кейін бұлшықет кернеуін басады.','бұлшықет'],['Смарт-бөтелке','Жарқырап, су ішуді еске салады — су нормасы оңай орындалады.','су'],['Маска және ақ шу','Ұйқыға арналған 3D-маска мен шу генераторы толық қараңғылық пен тыныштық береді.','ұйқы'],['Иглалы кілемше','Кілемшеде 10–20 минут жату арқаны босаңсытып, стрессті басады.','релакс']]},
+ check:{title:['Жалпы жағдай','чек-листі'],desc:'Соңғы аптада сізге қатысты тармақтарды белгілеңіз. Адалдық — ең жақсы биохак. Нәтиже браузерде сақталады.',of:'100-ден',reset:'Тазарту',
+  items:[['Көп түнде 7+ сағат ұйықтаймын','және сергек оянамын'],['Жеткілікті су ішемін','шөлдемеймін'],['Күніне 30+ минут қозғаламын','серуен де есептеледі'],['Күн сайын көкөніс жеймін','кемінде 2 рет'],['Күн жарығында боламын','таңертең 10+ минут'],['Қуатым тұрақты','түстен кейін құлдырамайды'],['Стресспен оңай күресемін','тұрақты мазасыздық жоқ'],['Жақындарыммен араласамын','тірі, жылы қарым-қатынас'],['Ауырсыну мен жайсыздық жоқ','арқа, бас, асқазан қалыпты'],['Өзіме және қуанышқа уақыт бар','хобби, демалыс, тыныштық']],
+  v:[['Бастаймыз ба?','Тармақтарды белгілеңіз — жеке кеңес аласыз.'],['Қамқорлық уақыты','Бір әдетті таңдаңыз — ұйқы не су — және оны 21 күн ұстаңыз. Кішкентай қадам үлкен жоспардан артық.'],['Жақсы тепе-теңдік','Негіз бар. Жетіспейтінін қосыңыз: таңғы жарық, серуен немесе тыныс жаттығуы.'],['Керемет форма','Дұрыс жолдасыз! Нәзік баптау уақыты — биохакинг пен гаджеттерге қараңыз.'],['Үйлесім ✦','Тамаша. Ырғақты сақтап, тәжірибеңізбен жақындарыңызбен бөлісіңіз.']]},
+ habits:{title:['Әдеттер','трекері'],desc:'Аптаның әр күнін белгілеңіз. Әдет орта есеппен 66 күнде қалыптасады — ең бастысы, қатарынан екі рет өткізіп алмау.',
+  items:['Су 2 л','Ұйқы 7+ сағат','8 000 қадам','Медитация','Көкөніс','Ұйқы алдында экрансыз'],days:['Дс','Сс','Ср','Бс','Жм','Сб','Жс'],done:'аптада орындалды',top:'үздік әдет',none:'—',reset:'Жаңа апта'},
+ food:{title:['Денсаулық','табақшасы'],desc:'Күрделі диеталарсыз. Табақшаны қарапайым схемамен жинаңыз — тамақтану сұрақтарының 90%-ы шешіледі.',quote:'Сіз — үнемі жейтін тағамыңыз.',plate:['½ көкөніс','¼ ақуыз','¼ жарма'],
+  items:[['Жартысы — көкөніс пен көкөніс жапырағы','Талшық микробиомды қоректендіреді. Мақсат — аптасына 30 түрлі өсімдік, оның ішінде шөптер, жаңғақтар мен тұқымдар.'],['Төрттен бірі — ақуыз','Балық, құс еті, жұмыртқа, бұршақ, тофу. Бұлшықет, тоқтық пен гормондар үшін салмақтың әр келісіне 1,2–1,6 г.'],['Төрттен бірі — күрделі көмірсулар','Қарақұмық, киноа, қоңыр күріш, толық дәнді нан. Және бір қасық пайдалы май: зәйтүн майы, авокадо.']],
+  rules:['Алдымен көкөніс, сосын көмірсу','Қант — күніне 25 г-нан аз','Аптасына 2 рет балық','Күн сайын ашытылған өнімдер','Кешкі ас — ұйқыдан 3 сағат бұрын']},
+ mind:{title:['Психикалық','денсаулық'],desc:'Психика да жүрек сияқты: оны жаттықтырып, демалдырып, уақтылы емдеу керек. Бұл — қалыпты жағдай.',quote:'Тыныштық — өзіңе қамқорлықтың бір түрі.',
+  tabs:['Тыныс','Медитация'],
+  breath:{h:'Шаршы тыныс',p:'Ұшқыштар мен спортшылардың тез тынышталу техникасы. Бір минут — және пульс баяулайды.',steps:['Дем алу 4','Кідіріс 4','Дем шығару 4','Кідіріс 4'],start:'1 минут тыныс алу',stop:'Тоқтату',orb:['Бастау','Дем ал','Кідіріс','Дем шығар','Кідіріс','Дайын']},
+  med:{h:'Медитация таймері',p:'Жайлы отырып, көзіңізді жұмыңыз да, тынысыңызды бақылаңыз. Қоңыраудың жұмсақ дыбысы басы мен соңын белгілейді.',start:'Бастау',pause:'Кідірту',resume:'Жалғастыру',reset:'Қайта',left:'қалды',done:'Намасте ✦'},
+  items:[['Эмоция күнделігі','Кешке 3 минут: не сезіндім, неге, маған не керек. Эмоцияны атау оның қарқынын төмендетеді.'],['Байланыстар','80 жылдық Гарвард зерттеуі бойынша қарым-қатынас сапасы — бақыт пен ұзақ өмірдің басты көрсеткіші.'],['Цифрлық гигиена','Күннің алғашқы және соңғы сағаты — жаңалықтар таспасынсыз. Хабарламалар тек адамдардан, қосымшалардан емес.'],['Алғыс','Күннің 3 жақсы оқиғасы — 2 аптада көңіл-күйді көтеретін позитивті психологияның қарапайым тәжірибесі.'],['Зейінділік','Күніне 10 минут медитация мазасыздықты азайтады. 2 минуттан бастаңыз — ұзақтығы емес, жүйелілігі маңызды.'],['Көмек сұрау','Жаман көңіл-күй екі аптадан ұзаққа созылса — психологқа немесе психотерапевтке жүгінуге себеп.']]},
+ yoga:{title:['10 минуттық','йога'],desc:'Икемділік пен сергек сана үшін таңғы кешен. «Бастау» түймесін басыңыз — таймер барлық асаналар бойынша жүргізеді, қоңырау ауысуды хабарлайды.',quote:'Тыныс ал. Созыл. Босат.',
+  pose:'Асана',of:'/',total:'барлығы 10 минут',left:'қалды',done:'Кешен аяқталды ✦',sec:'с',m:'мин',
+  items:[['Тадасана','Тау асанасы','Табандар бірге, төбе жоғары созылады, қолдар бас үстінде. Мүсінді түзейді.'],['Адхо Мукха Шванасана','Төмен қараған ит','Дене — төңкерілген «V». Арқа мен аяқтың артқы бетін созады.'],['Бхуджангасана','Кобра','Ішпен жатып, кеудені алға және жоғары ашыңыз. Арқаны нығайтып, сергітеді.'],['Баласана','Бала асанасы','Өкшеге отырып, маңдайды кілемшеге қойыңыз, қолдар алда. Жүйке жүйесін тыныштандырады.'],['Вирабхадрасана II','Жауынгер II','Кең қадам, тізе өкше үстінде, қолдар екі жаққа. Ортасында жағын ауыстырыңыз.'],['Шавасана','Босаңсу','Шалқаңыздан жатып, көзді жұмыңыз. Денені төбеден аяқ ұшына дейін сезініңіз.']]},
+ travel:{title:['Жанға арналған','саяхат'],desc:'Wellness-саяхат — тек спа емес. Бұл ырғақты өзгерту, табиғат, жаңа дәмдер және өзіңізге арналған уақыт.',
+  items:[['Индонезия','Бали, Убуд','Күріш террасалары арасындағы йога-ретриттер, джаму сусындары және таңғы медитация.'],['Исландия','Көгілдір лагуна','Геотермалды бұлақтар, солтүстік шұғыласы және табиғаттағы контрастты ванналар.'],['Қазақстан','Алтай мен Бурабай','Таулы ауа, қарағайлы орман, жаяу соқпақтар мен қымыз — алысқа ұшпай-ақ детокс.'],['Жапония','Киото, онсэндер','Синрин-ёку — «орман ванналары», шай рәсімдері және асықпау философиясы.'],['Португалия','Алгарве','Мұхит, сёрфинг және ұзақ өмірдің көшбасшысы — жерорта теңізі диетасы.'],['Үндістан','Керала','Аюрведа бағдарламалары, майлы массаждар және өз отанындағы йога.']],
+  tips:[['Джетлаг','Бірден жергілікті уақытпен өмір сүріңіз: таңертең — күн, кешке — кофеинсіз.'],['Wellness-қобдиша','Ұйқы маскасы, құлақ тығыны, электролиттер, магний, SPF және ыңғайлы аяқ киім.'],['Белсенділік','Қалаларды жаяу аралаңыз: күніне 15 000 қадам өзінен-өзі жиналады.']]},
+ foot:{a:'Кішкентай қадамдар —',b:'үлкен өзгерістер.',top:'Жоғарыға',note:'Материал танысу үшін берілген және дәрігер кеңесін алмастырмайды. Тамақтануды өзгерту, қоспалар қабылдау немесе жаңа жүктемелер алдында маманмен кеңесіңіз.',sign:'сау болыңыз'}
+},
+en:{
+ nav:['Health','Biohacking','Gadgets','Check-up','Habits','Nutrition','Mind','Yoga','Travel'],
+ min:'min',
+ hero:{eyebrow:'Wellness & Lifestyle',h1a:'Body. Mind.',h1b:'Rhythm of life.',lead:'We welcome you to a space of mindful self-care. Here is the finest of health, biohacking, nutrition and inner balance — refined, uncluttered and grounded in science.',cta1:'Begin the journey',cta2:'Take the check-up',meta:[['9','sections'],['∞','benefit']],ring:'SLEEP · MOVE · NOURISH · BREATHE · LIGHT · CALM · JOURNEY · ',core:'live<br>mindfully'},
+ health:{title:['Four pillars of','health'],desc:'No supplement replaces the basics. Sleep, movement, light and water deliver 80% of the result — the rest is fine-tuning.',quote:'Movement is medicine you always carry with you.',
+  items:[['Sleep','7–9 hours at the same time every night. A cool (18–20°C), dark bedroom; screens off an hour before bed.','the base of recovery'],['Movement','7–10k steps, 150 minutes of moderate activity a week and 2 strength sessions for muscles and bones.','extends life'],['Light','10–15 minutes of morning daylight sets your circadian rhythm: energy by day, deep sleep by night.','a free biohack'],['Water','~30 ml per kg of body weight daily. First glass right after waking. Thirst already means mild dehydration.','energy & focus']],
+  fact:['−30%','lower risk of early death for people who walk at least 30 minutes a day.']},
+ bio:{title:['Biohacking','without myths'],desc:'Biohacking means conscious experiments with your lifestyle. The scale shows how well each method is backed by research.',lvl:'evidence',
+  items:[['Cold','A contrast shower or 1–3 minutes in cold water boosts dopamine and alertness.','Start with 30 seconds of cold water at the end of your shower.'],['Intermittent fasting','An 8–10 hour eating window helps appetite control and insulin sensitivity.','Try 14/10 as a gentle start. Not for pregnancy or eating disorders.'],['Breathwork','Slow breathing (6 breaths a minute) lowers heart rate and stress within minutes.','Try the exercise in the Mind section.'],['Lab tests','Once a year: vitamin D, ferritin, B12, glucose, lipid panel, TSH. Data beats guesswork.','Supplements only based on results and after seeing a doctor.'],['Tracking','Watches and rings track sleep, resting heart rate and HRV — a marker of recovery.','Watch the trends, not a single day’s number.'],['Sauna','2–4 sessions a week, 15–20 minutes each, are linked to better heart and vascular health.','Stay hydrated and never combine with alcohol.']]},
+ gadgets:{title:['Helpful','gadgets'],desc:'Tech that gently nudges you toward healthy habits. Start with the one that solves your main goal.',quote:'Technology should serve you, not rule you.',
+  items:[['Smart ring','Discreetly tracks sleep, HRV, body temperature and recovery. E.g. Oura, Ultrahuman.','sleep · recovery'],['Fitness watch','Steps, heart rate, workouts and stand-up reminders. E.g. Apple Watch, Garmin, Whoop.','movement'],['Sunrise alarm','Simulates dawn 20–30 minutes before waking — a gentle, stress-free start.','morning · rhythm'],['Blue-light glasses','In the evening they reduce screens’ effect on melatonin and help you fall asleep faster.','sleep'],['Massage gun','Relieves muscle tension after workouts and long hours of sitting.','muscles'],['Smart bottle','Glows to remind you to sip — hit your water goal effortlessly.','hydration'],['Mask & white noise','A 3D sleep mask and a noise machine create perfect darkness and quiet.','sleep'],['Acupressure mat','10–20 minutes on the mat relax your back and ease stress.','relax']]},
+ check:{title:['Wellbeing','check-up'],desc:'Tick what has been true for you this past week. Honesty is the best biohack. Your result is saved in the browser.',of:'of 100',reset:'Reset',
+  items:[['I sleep 7+ hours most nights','and wake up rested'],['I drink enough water','pale urine, no thirst'],['I move 30+ minutes a day','walking counts too'],['I eat vegetables daily','at least 2 servings'],['I get daylight','10+ minutes in the morning'],['My energy is steady','no afternoon crash'],['I handle stress well','no constant anxiety'],['I connect with loved ones','real, warm contact'],['No pain or discomfort','back, head and gut are fine'],['I have time for myself and joy','hobbies, rest, quiet']],
+  v:[['Shall we begin?','Tick the items to get a personal tip.'],['Time for care','Pick one habit — sleep or water — and keep it for 21 days. A small step beats a big plan.'],['Good balance','The basics are there. Add what’s missing: morning light, a walk or breathwork.'],['Great shape','You’re on the right track! Time to fine-tune — explore biohacking and gadgets.'],['Harmony ✦','Perfect. Keep the rhythm and share it with the people you love.']]},
+ habits:{title:['Habit','tracker'],desc:'Tick each day of the week. A habit takes 66 days on average to form — the key is never to miss twice in a row.',
+  items:['Water 2 L','Sleep 7+ hours','8,000 steps','Meditation','Veggies','No screens before bed'],days:['Mo','Tu','We','Th','Fr','Sa','Su'],done:'done this week',top:'top habit',none:'—',reset:'New week'},
+ food:{title:['The healthy','plate'],desc:'No complicated diets. Build your plate with a simple scheme and 90% of nutrition questions are solved.',quote:'You are what you eat regularly.',plate:['½ veggies','¼ protein','¼ grains'],
+  items:[['Half — vegetables & greens','Fibre feeds your microbiome. Aim for 30 different plants a week, including herbs, nuts and seeds.'],['A quarter — protein','Fish, poultry, eggs, legumes, tofu. 1.2–1.6 g per kg of body weight for muscle, satiety and hormones.'],['A quarter — complex carbs','Buckwheat, quinoa, brown rice, wholegrain bread. Plus a spoon of healthy fat: olive oil, avocado.']],
+  rules:['Veggies first, carbs after','Sugar under 25 g a day','Fish twice a week','Fermented foods daily','Dinner 3 hours before bed']},
+ mind:{title:['Mental','health'],desc:'Your mind is an organ like your heart: it needs training, rest and timely care. That’s perfectly normal.',quote:'Silence is a form of self-care too.',
+  tabs:['Breathing','Meditation'],
+  breath:{h:'Box breathing',p:'A technique used by pilots and athletes for fast calm. One minute and your pulse slows down.',steps:['Inhale 4','Hold 4','Exhale 4','Hold 4'],start:'Breathe for 1 minute',stop:'Stop',orb:['Start','Inhale','Hold','Exhale','Hold','Done']},
+  med:{h:'Meditation timer',p:'Sit comfortably, close your eyes and follow your breath. A soft bell marks the start and the end.',start:'Start',pause:'Pause',resume:'Resume',reset:'Reset',left:'remaining',done:'Namaste ✦'},
+  items:[['Emotion journal','3 minutes each evening: what I felt, why, what I need. Naming an emotion lowers its intensity.'],['Connection','Relationship quality is the top predictor of happiness and longevity, per Harvard’s 80-year study.'],['Digital hygiene','The first and last hour of the day — no feeds. Notifications only from people, not apps.'],['Gratitude','3 good things each day — a simple positive-psychology practice that noticeably lifts mood in 2 weeks.'],['Mindfulness','10 minutes of meditation a day reduces anxiety. Start with 2 — consistency matters more than length.'],['Ask for help','If low mood lasts more than two weeks, it’s a reason to see a psychologist or therapist.']]},
+ yoga:{title:['Yoga','in 10 minutes'],desc:'A morning flow for flexibility and a clear head. Press Start — the timer guides you through each pose and a bell signals the change.',quote:'Breathe. Stretch. Let go.',
+  pose:'Pose',of:'of',total:'10 minutes total',left:'remaining',done:'Flow complete ✦',sec:'s',m:'min',
+  items:[['Tadasana','Mountain pose','Feet together, crown reaching up, arms overhead. Aligns your posture.'],['Adho Mukha Svanasana','Downward dog','Body in an inverted “V”. Lengthens the spine and hamstrings.'],['Bhujangasana','Cobra','Lying on your belly, open the chest forward and up. Strengthens the back, energises.'],['Balasana','Child’s pose','Sit on your heels, forehead to the mat, arms forward. Calms the nervous system.'],['Virabhadrasana II','Warrior II','Wide stance, knee over heel, arms out. Switch sides halfway.'],['Savasana','Relaxation','Lie on your back, eyes closed. Scan your body from crown to toes.']]},
+ travel:{title:['Travel','for the soul'],desc:'A wellness trip isn’t just a spa. It’s a change of pace, nature, new flavours and time for yourself.',
+  items:[['Indonesia','Bali, Ubud','Yoga retreats among rice terraces, jamu drinks and sunrise meditation.'],['Iceland','Blue Lagoon','Geothermal springs, northern lights and contrast bathing in the wild.'],['Kazakhstan','Altai & Burabay','Mountain air, pine forests, hiking trails and kumis — a detox without long flights.'],['Japan','Kyoto & onsens','Shinrin-yoku “forest bathing”, tea ceremonies and the art of slowness.'],['Portugal','Algarve','Ocean, surfing and the Mediterranean diet — a leader in longevity.'],['India','Kerala','Ayurvedic programmes, oil massages and yoga in its homeland.']],
+  tips:[['Jet lag','Switch to local time at once: sunlight in the morning, no caffeine in the evening.'],['Wellness kit','Sleep mask, earplugs, electrolytes, magnesium, SPF and comfy shoes.'],['Stay active','Explore cities on foot: 15,000 steps a day come naturally.']]},
+ foot:{a:'Small steps —',b:'big changes.',top:'Back to top',note:'This content is for information only and does not replace medical advice. Consult a specialist before changing your diet, taking supplements or starting new training.',sign:'be well'}
+}};
+
+/* ---------- state ---------- */
+let lang=store.get('wb-lang'); if(!I18N[lang]) lang='ru';
+let checks=[]; try{checks=JSON.parse(store.get('wb-check')||'[]')}catch(e){}
+function weekId(){const d=new Date();const day=(d.getDay()+6)%7;d.setDate(d.getDate()-day);return d.toISOString().slice(0,10)}
+const todayIdx=(new Date().getDay()+6)%7;
+let H=null; try{H=JSON.parse(store.get('wb-habits')||'null')}catch(e){}
+if(!H||H.week!==weekId()||!Array.isArray(H.d)) H={week:weekId(),d:HAB_IC.map(()=>Array(7).fill(false))};
+const saveH=()=>store.set('wb-habits',JSON.stringify(H));
+const Y={i:0,left:POSE_SEC[0],run:false,t:null,done:false};
+const M={dur:300,left:300,run:false,t:null,done:false};
+const B={t:null,i:0,el:0};
+let tab='breath', first=true;
+const T=()=>I18N[lang];
+
+/* ---------- templates ---------- */
+const fmtN=n=>lang==='en'?String(n):String(n).replace('.',',');
+function head(id,i){const t=T(),s=t[id];return `<div class="sec-head reveal"><div><div class="num">${pad(i+1)} <i>/ ${pad(IDS.length)} · ~${fmtN(MINS[i])} ${t.min}</i></div><h2>${s.title[0]} <em>${s.title[1]}</em></h2></div><p>${s.desc}</p></div>`}
+const banner=(k,q)=>`<figure class="banner reveal">${img(k,1600)}<q>${q}</q></figure>`;
+const sec=(id,i,body,alt)=>`<section class="block${alt?' alt':''}" id="${id}"><div class="wrap">${head(id,i)}${body}</div></section>`;
+
+function rHero(t){const h=t.hero;return `<header class="hero" id="hello"><div class="hero-bg">${img('hero',2000)}</div><div class="hero-shade"></div>
+<div class="ring" aria-hidden="true"><svg viewBox="0 0 400 400"><defs><path id="rc" d="M200,200 m-172,0 a172,172 0 1,1 344,0 a172,172 0 1,1 -344,0"/></defs><text class="ring-t"><textPath href="#rc">${h.ring}</textPath></text></svg><div class="core"><span>${h.core}</span></div></div>
+<div class="wrap"><span class="eyebrow reveal">${h.eyebrow}</span><h1 class="reveal">${h.h1a}<br><em>${h.h1b}</em></h1><p class="lead reveal">${h.lead}</p>
+<div class="hero-cta reveal"><a href="#health" class="btn gold">${h.cta1} ${ic('arrow')}</a><a href="#check" class="btn">${h.cta2}</a></div>
+<div class="hero-meta reveal">${h.meta.map(m=>`<div><b>${m[0]}</b><small>${m[1]}</small></div>`).join('')}</div></div><div class="scroll-cue"></div></header>`}
+
+function rHealth(t){const s=t.health;return sec('health',0,banner('health',s.quote)+`<div class="grid g4">${s.items.map((it,i)=>`<div class="card reveal"><span class="idx">${pad(i+1)}</span><div class="ico">${ic(HEALTH_IC[i])}</div><h3>${it[0]}</h3><p>${it[1]}</p><span class="tag">${it[2]}</span></div>`).join('')}</div>
+<div class="fact reveal"><div class="big-n">${s.fact[0]}</div><p class="serif">${s.fact[1]}</p></div>`)}
+
+function rBio(t){const s=t.bio;return sec('bio',1,`<div class="grid g3">${s.items.map((it,i)=>`<div class="card bio reveal"><div class="ico">${ic(BIO_IC[i])}</div><h3>${it[0]}</h3><p>${it[1]}</p><div class="how">${it[2]}</div><div class="lvl">${[0,1,2,3,4].map(k=>`<i class="${k<BIO_LVL[i]?'on':''}"></i>`).join('')}<span>${s.lvl}</span></div></div>`).join('')}</div>`,true)}
+
+function rGadgets(t){const s=t.gadgets;return sec('gadgets',2,banner('gadgets',s.quote)+`<div class="grid g4">${s.items.map((it,i)=>`<div class="card gad reveal"><div class="ico">${ic(GAD_IC[i])}</div><h3>${it[0]}</h3><p>${it[1]}</p><span class="tag">${it[2]}</span></div>`).join('')}</div>`)}
+
+function rCheck(t){const s=t.check;return sec('check',3,`<div class="two"><div class="checks">${s.items.map((it,i)=>`<label class="chk reveal"><input type="checkbox" data-chk="${i}" ${checks[i]?'checked':''}><span class="box"><svg viewBox="0 0 16 12"><path d="M1 6l5 5L15 1" stroke="#14110c" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg></span><span class="t">${it[0]}<small>${it[1]}</small></span>${ic(CHK_IC[i])}</label>`).join('')}</div>
+<aside class="panel reveal"><div class="gauge"><svg viewBox="0 0 200 200"><defs><linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ead5a6"/><stop offset="1" stop-color="#9c7c45"/></linearGradient></defs><circle class="bg" cx="100" cy="100" r="88"/><circle class="fg" id="gfg" cx="100" cy="100" r="88" stroke-dasharray="552.9" stroke-dashoffset="552.9"/></svg><div class="val"><b id="gpct">0</b><small>${s.of}</small></div></div>
+<h3 id="gv"></h3><p id="ga"></p><button class="btn" data-act="chk-reset">${ic('reset')} ${s.reset}</button></aside></div>`,true)}
+
+function rHabits(t){const s=t.habits;return sec('habits',4,`<div class="habits">${s.items.map((n,h)=>`<div class="h-row reveal"><div class="h-name">${ic(HAB_IC[h])}<span>${n}</span><span class="h-cnt" id="hc${h}"></span></div><div class="h-cells">${s.days.map((d,k)=>`<button class="hc${k===todayIdx?' today':''}" data-h="${h}" data-d="${k}" aria-label="${n} — ${d}">${d}</button>`).join('')}</div></div>`).join('')}
+<div class="h-stats reveal"><div class="h-stat"><b id="hpct">0%</b><small>${s.done}</small><div class="h-bar"><i id="hbar"></i></div></div><div class="h-stat"><b id="htop" style="font-size:28px;line-height:1.2">—</b><small>${s.top}</small></div></div>
+<div class="h-foot"><button class="btn" data-act="h-reset">${ic('reset')} ${s.reset}</button></div></div>`)}
+
+function rFood(t){const s=t.food,c=['var(--veg)','var(--pro)','var(--gra)'];return sec('food',5,`<div class="plate-wrap"><div class="plate reveal"><svg viewBox="0 0 400 400" role="img" aria-label="plate">
+<defs><radialGradient id="pr" cx=".4" cy=".35"><stop offset="0" stop-color="#2a261f"/><stop offset="1" stop-color="#15130f"/></radialGradient></defs>
+<circle cx="200" cy="200" r="196" fill="url(#pr)" stroke="#c9a96e" stroke-opacity=".55" stroke-width="1.5"/><circle cx="200" cy="200" r="176" fill="none" stroke="#c9a96e" stroke-opacity=".3"/>
+<path class="seg" d="M200 200L200 44A156 156 0 0 1 200 356Z" fill="#7f9470"/><path class="seg" d="M200 200L200 356A156 156 0 0 1 44 200Z" fill="#b9785a"/><path class="seg" d="M200 200L44 200A156 156 0 0 1 200 44Z" fill="#cfae72"/>
+<g font-family="Cormorant Garamond" font-style="italic" fill="#14110c" text-anchor="middle"><text x="276" y="208" font-size="30">${s.plate[0]}</text><text x="138" y="276" font-size="25">${s.plate[1]}</text><text x="138" y="142" font-size="25">${s.plate[2]}</text></g></svg></div>
+<div><div class="legend">${s.items.map((it,i)=>`<div class="leg reveal" style="color:${c[i]}"><span class="dot" style="background:${c[i]}"></span><div style="color:var(--ink)"><b>${it[0]}</b><p>${it[1]}</p></div></div>`).join('')}</div>
+<div class="rules reveal">${s.rules.map(r=>`<span class="pill">${r}</span>`).join('')}</div></div></div>`,true).replace('<div class="plate-wrap">',banner('food',s.quote)+'<div class="plate-wrap">')}
+
+function rMind(t){const s=t.mind,b=s.breath,m=s.med;return sec('mind',6,banner('mind',s.quote)+`<div class="practice reveal">
+<div class="tabs" role="tablist"><button data-tab="breath" class="${tab==='breath'?'on':''}">${s.tabs[0]}</button><button data-tab="med" class="${tab==='med'?'on':''}">${s.tabs[1]}</button></div>
+<div class="pane${tab==='breath'?' on':''}" data-pane="breath"><div class="orb-box"><div class="orb" id="orb"><span id="orbT">${b.orb[0]}</span></div></div>
+<div><h3>${b.h}</h3><p>${b.p}</p><div class="steps">${b.steps.map(x=>`<span class="pill">${x}</span>`).join('')}</div><button class="btn gold" data-act="b-play" id="bBtn">${ic('play')} ${b.start}</button></div></div>
+<div class="pane${tab==='med'?' on':''}" data-pane="med"><div class="timer"><svg viewBox="0 0 240 240"><circle class="bg" cx="120" cy="120" r="112"/><circle class="fg" id="mfg" cx="120" cy="120" r="112" stroke-dasharray="703.7" stroke-dashoffset="0"/></svg><div class="val"><b id="mT">5:00</b><small id="mL">${m.left}</small></div></div>
+<div><h3>${m.h}</h3><p>${m.p}</p><div class="presets">${[2,5,10].map(x=>`<button class="chip" data-min="${x}">${x} ${t.min}</button>`).join('')}</div><div class="ctrl"><button class="btn gold" data-act="m-play" id="mBtn"></button><button class="btn" data-act="m-reset">${ic('reset')} ${m.reset}</button></div></div></div>
+</div><div class="grid g3">${s.items.map((it,i)=>`<div class="card reveal"><div class="ico">${ic(MIND_IC[i])}</div><h3>${it[0]}</h3><p>${it[1]}</p></div>`).join('')}</div>`)}
+
+function rYoga(t){const s=t.yoga;return sec('yoga',7,banner('yoga',s.quote)+`<div class="player reveal"><div class="p-stage"><span class="p-count" id="yC"></span><span class="p-total">${s.total}</span><div id="yF"></div><div class="p-prog"><i id="yP"></i></div></div>
+<div class="p-info"><div class="sk" id="yS"></div><h3 id="yN"></h3><p id="yD"></p><div class="p-row"><div class="timer"><svg viewBox="0 0 240 240"><circle class="bg" cx="120" cy="120" r="112"/><circle class="fg" id="yfg" cx="120" cy="120" r="112" stroke-dasharray="703.7"/></svg><div class="val"><b id="yT"></b><small>${s.left}</small></div></div>
+<div class="ctrl"><button class="round" data-act="y-prev" aria-label="prev">${ic('prev')}</button><button class="round main" data-act="y-play" id="yBtn" aria-label="play"></button><button class="round" data-act="y-next" aria-label="next">${ic('next')}</button></div></div></div></div>
+<div class="p-list reveal">${s.items.map((p,i)=>`<button class="p-chip" data-pose="${i}"><b>${p[1]}</b><small>${POSE_SEC[i]>=60?POSE_SEC[i]/60+' '+s.m:POSE_SEC[i]+' '+s.sec}</small></button>`).join('')}</div>`,true)}
+
+function rTravel(t){const s=t.travel;return sec('travel',8,`<div class="grid g3">${s.items.map((it,i)=>`<div class="card dest reveal">${img(DEST[i],900)}<span class="loc">${it[0]}</span><h3>${it[1]}</h3><p>${it[2]}</p></div>`).join('')}</div>
+<div class="grid g3 tips">${s.tips.map((it,i)=>`<div class="card tip reveal"><div class="ico">${ic(TIP_IC[i])}</div><div><h3>${it[0]}</h3><p>${it[1]}</p></div></div>`).join('')}</div>`)}
+
+function rFoot(t){const f=t.foot;return `<footer><div class="wrap"><p class="serif reveal">${f.a}<br><em class="g">${f.b}</em></p><a href="#hello" class="btn">${ic('up')} ${f.top}</a><p class="sign">— ${f.sign} —</p><p class="note">${f.note}</p></div></footer>`}
+
+/* ---------- updaters ---------- */
+function updCheck(){
+  const s=T().check,n=checks.filter(Boolean).length,p=n*10,C=552.9,fg=$('#gfg');if(!fg)return;
+  fg.style.strokeDashoffset=C-C*p/100;$('#gpct').textContent=p;
+  const k=n===0?0:p<40?1:p<70?2:p<100?3:4;$('#gv').textContent=s.v[k][0];$('#ga').textContent=s.v[k][1];
+}
+function updHabits(){
+  const s=T().habits;let tot=0,best=-1,bi=-1;
+  H.d.forEach((row,h)=>{const c=row.filter(Boolean).length;tot+=c;if(c>best){best=c;bi=h}
+    const el=$('#hc'+h);if(el)el.textContent=c+'/7';
+    row.forEach((v,d)=>{const b=document.querySelector(`.hc[data-h="${h}"][data-d="${d}"]`);if(b)b.classList.toggle('on',v)})});
+  const pct=Math.round(tot/(H.d.length*7)*100);
+  if($('#hpct')){$('#hpct').textContent=pct+'%';$('#hbar').style.width=pct+'%';$('#htop').textContent=best>0?s.items[bi]:s.none}
+}
+function updYoga(){
+  const s=T().yoga,p=s.items[Y.i],total=POSE_SEC[Y.i];if(!$('#yN'))return;
+  $('#yC').textContent=Y.done?s.done:`${s.pose} ${Y.i+1} ${s.of} ${POSE_SEC.length}`;
+  if($('#yF').dataset.i!=Y.i){$('#yF').innerHTML=FIG[Y.i];$('#yF').dataset.i=Y.i}
+  $('#yS').textContent=p[0];$('#yN').textContent=p[1];$('#yD').textContent=p[2];
+  $('#yT').textContent=mmss(Y.left);$('#yfg').style.strokeDashoffset=703.7*(1-Y.left/total);
+  const all=POSE_SEC.reduce((a,b)=>a+b,0),passed=POSE_SEC.slice(0,Y.i).reduce((a,b)=>a+b,0)+(total-Y.left);
+  $('#yP').style.width=(passed/all*100)+'%';
+  $('#yBtn').innerHTML=ic(Y.run?'pause':'play');
+  $$('.p-chip').forEach((c,i)=>{c.classList.toggle('on',i===Y.i);c.classList.toggle('done',i<Y.i)});
+}
+function updMed(){
+  const m=T().mind.med;if(!$('#mT'))return;
+  $('#mT').textContent=M.done?'✦':mmss(M.left);$('#mL').textContent=M.done?m.done:m.left;
+  $('#mfg').style.strokeDashoffset=703.7*(1-M.left/M.dur);
+  $('#mBtn').innerHTML=M.run?ic('pause')+' '+m.pause:ic('play')+' '+(M.left<M.dur&&!M.done?m.resume:m.start);
+  $$('.chip[data-min]').forEach(c=>c.classList.toggle('on',+c.dataset.min*60===M.dur));
+}
+function updBreath(){const b=T().mind.breath,btn=$('#bBtn');if(btn)btn.innerHTML=B.t?ic('pause')+' '+b.stop:ic('play')+' '+b.start}
+
+/* ---------- sound ---------- */
+let AC;
+function bell(){try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();const n=AC.currentTime;
+  [[528,.28],[1056,.1],[1584,.05]].forEach(([f,v])=>{const o=AC.createOscillator(),g=AC.createGain();o.type='sine';o.frequency.value=f;g.gain.setValueAtTime(0,n);g.gain.linearRampToValueAtTime(v,n+.02);g.gain.exponentialRampToValueAtTime(.0001,n+3.2);o.connect(g).connect(AC.destination);o.start(n);o.stop(n+3.3)})}catch(e){}}
+
+/* ---------- timers ---------- */
+function yTick(){Y.left--;if(Y.left<=0){bell();if(Y.i<POSE_SEC.length-1){Y.i++;Y.left=POSE_SEC[Y.i]}else{Y.left=0;Y.run=false;Y.done=true;clearInterval(Y.t)}}updYoga()}
+function yGo(i){Y.i=Math.max(0,Math.min(POSE_SEC.length-1,i));Y.left=POSE_SEC[Y.i];Y.done=false;updYoga()}
+function mTick(){M.left--;if(M.left<=0){M.left=0;M.run=false;M.done=true;clearInterval(M.t);bell()}updMed()}
+function bStep(){
+  const o=T().mind.breath.orb,orb=$('#orb'),tx=$('#orbT');
+  if(B.el>=60){bStop();if(tx)tx.textContent=o[5];return}
+  const ph=B.i%4,sc=[1.9,1.9,1,1][ph];if(orb){orb.style.transform=`scale(${sc})`;tx.style.transform=`scale(${1/sc})`;tx.textContent=o[ph+1]}
+  B.i++;B.el+=4;
+}
+function bStop(){clearInterval(B.t);B.t=null;const orb=$('#orb');if(orb){orb.style.transform='scale(1)';$('#orbT').style.transform='scale(1)';$('#orbT').textContent=T().mind.breath.orb[0]}updBreath()}
+
+/* ---------- render ---------- */
+let io;
+function render(){
+  const t=T();document.documentElement.lang=lang;
+  $('#links').innerHTML=IDS.map((id,i)=>`<a href="#${id}">${t.nav[i]}</a>`).join('');
+  $('#drawerLinks').innerHTML=IDS.map((id,i)=>`<a href="#${id}"><span>${pad(i+1)}</span>${t.nav[i]}</a>`).join('');
+  $$('#lang button').forEach(b=>b.classList.toggle('on',b.dataset.lang===lang));
+  if(B.t)bStop();
+  $('#app').innerHTML=rHero(t)+rHealth(t)+rBio(t)+rGadgets(t)+rCheck(t)+rHabits(t)+rFood(t)+rMind(t)+rYoga(t)+rTravel(t)+rFoot(t);
+  if(io)io.disconnect();
+  io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+  $$('.reveal').forEach((el,i)=>{if(!first)el.classList.add('in');else{el.style.transitionDelay=(i%4)*90+'ms';io.observe(el)}});
+  first=false;
+  updCheck();updHabits();updYoga();updMed();updBreath();onScroll();
+}
+
+/* ---------- events ---------- */
+document.addEventListener('click',e=>{
+  const L=e.target.closest('[data-lang]');if(L){lang=L.dataset.lang;store.set('wb-lang',lang);render();return}
+  const hc=e.target.closest('.hc');if(hc){const h=+hc.dataset.h,d=+hc.dataset.d;H.d[h][d]=!H.d[h][d];saveH();updHabits();return}
+  const tb=e.target.closest('[data-tab]');if(tb){tab=tb.dataset.tab;$$('[data-tab]').forEach(b=>b.classList.toggle('on',b===tb));$$('[data-pane]').forEach(p=>p.classList.toggle('on',p.dataset.pane===tab));return}
+  const pm=e.target.closest('[data-min]');if(pm){clearInterval(M.t);M.run=false;M.done=false;M.dur=M.left=+pm.dataset.min*60;updMed();return}
+  const pc=e.target.closest('[data-pose]');if(pc){yGo(+pc.dataset.pose);return}
+  const a=e.target.closest('[data-act]');if(!a)return;
+  switch(a.dataset.act){
+    case 'chk-reset':checks=[];store.set('wb-check','[]');$$('[data-chk]').forEach(b=>b.checked=false);updCheck();break;
+    case 'h-reset':H={week:weekId(),d:HAB_IC.map(()=>Array(7).fill(false))};saveH();updHabits();break;
+    case 'b-play':if(B.t){bStop()}else{B.i=0;B.el=0;bStep();B.t=setInterval(bStep,4000);updBreath()}break;
+    case 'm-play':if(M.run){M.run=false;clearInterval(M.t)}else{if(M.done||M.left<=0){M.left=M.dur;M.done=false}if(M.left===M.dur)bell();M.run=true;M.t=setInterval(mTick,1000)}updMed();break;
+    case 'm-reset':clearInterval(M.t);M.run=false;M.done=false;M.left=M.dur;updMed();break;
+    case 'y-play':if(Y.run){Y.run=false;clearInterval(Y.t)}else{if(Y.done){Y.i=0;Y.left=POSE_SEC[0];Y.done=false}if(Y.i===0&&Y.left===POSE_SEC[0])bell();Y.run=true;Y.t=setInterval(yTick,1000)}updYoga();break;
+    case 'y-prev':yGo(Y.i-1);break;
+    case 'y-next':yGo(Y.i+1);break;
+  }
+});
+document.addEventListener('change',e=>{const c=e.target.closest('[data-chk]');if(c){checks[+c.dataset.chk]=c.checked;store.set('wb-check',JSON.stringify(checks));updCheck()}});
+
+/* theme */
+const root=document.documentElement,st=store.get('wb-theme');if(st)root.dataset.theme=st;
+$('#theme').onclick=()=>{root.dataset.theme=root.dataset.theme==='light'?'dark':'light';store.set('wb-theme',root.dataset.theme)};
+/* menu */
+const dr=$('#drawer');$('#burger').onclick=()=>dr.classList.add('open');$('#close').onclick=()=>dr.classList.remove('open');
+dr.addEventListener('click',e=>{if(e.target.closest('a'))dr.classList.remove('open')});
+/* scroll */
+const nav=$('#nav'),prog=$('#progress');
+function onScroll(){const h=document.documentElement.scrollHeight-innerHeight;prog.style.width=(h>0?scrollY/h*100:0)+'%';nav.classList.toggle('scrolled',scrollY>40);
+  let cur='';$$('section.block').forEach(s=>{if(s.getBoundingClientRect().top<innerHeight*.4)cur=s.id});$$('#links a').forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+cur))}
+addEventListener('scroll',onScroll,{passive:true});
+
+render();
+})();
+</script>
+</body>
+</html>
